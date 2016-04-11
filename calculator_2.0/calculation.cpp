@@ -51,6 +51,11 @@ double Calculation::carryout(queue<string> que)
 	string que_s;
 	string sign1_top;
 	
+	//特殊情况:-(3-2)+1= 开头为"-"
+	//解决方法:压入一个"0" 
+	if(que.front()=="-")
+	signstore.push("0");
+	
 	//==========================//
 	//从'='开始从右向左遍历     // 
 	//所以用一个栈signstore实现 //
