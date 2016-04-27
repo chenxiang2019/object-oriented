@@ -51,8 +51,6 @@ double Calculation::carryout(queue<string> que)
 	string que_s;
 	string sign1_top;
 	
-	//特殊情况:-(3-2)+1= 开头为"-"
-	//解决方法:压入一个"0" 
 	if(que.front()=="-")
 	signstore.push("0");
 	
@@ -121,6 +119,7 @@ double Calculation::carryout(queue<string> que)
 			}
 			
 			//s的优先级大于sign1栈顶元素 //
+			
 			if(priority(s) > priority(sign1.top()))
 			{
 				sign1.push(s);
@@ -134,7 +133,7 @@ double Calculation::carryout(queue<string> que)
 			//当遇到s的优先级小于栈顶元素时    // 
 			//把sign1里面的字符从栈顶          //
 			// push进sign2                     //
-			//直到栈顶元素优先级大于s          // 
+			//直到栈顶元素优先级大于s或者栈空  // 
 			//=================================// 
 			else if(priority(s) < priority(sign1.top()))
 			{
@@ -143,7 +142,10 @@ double Calculation::carryout(queue<string> que)
 					sign1_top=sign1.top();
 					
 				    sign1.pop();
+				    
 				    sign2.push(sign1_top);
+				    
+				    if(sign1.empty())break;
 				}
 				sign1.push(s);
 				continue;
@@ -172,12 +174,21 @@ double Calculation::carryout(queue<string> que)
 	
 //-------------------------END-------------------------//	
 	
+	/*while(!sign2.empty())
+	{
+		cout<<sign2.top();
+		sign2.pop();
+	}
+	
+	cout<<endl;*/
+	
 	//========部分2========// 
 	//计算前缀表达式       // 
 	//=====================//
 	
 	//sign2逆序存放->sign_2 
-	stack<string> sign_2;
+    stack<string> sign_2;
+	
 	while(!sign2.empty())
 	{
 		sign_2.push(sign2.top());
@@ -191,6 +202,7 @@ double Calculation::carryout(queue<string> que)
 	stack<double> numberstore;//存储数字的栈 
 	string s2;
 	
+	numberstore.push(0);
 	//计算部分 
 	while(!sign_2.empty())
 	{
@@ -230,7 +242,10 @@ double Calculation::carryout(queue<string> que)
 	
 	double value=0;
 	
-	value=numberstore.top();//栈顶元素即最终结果 
+	if(!numberstore.empty())
+	value=numberstore.top();//栈顶元素即最终结果
 	 
 	return value;
 }
+
+//-3+(9-((10-8)+(9-8*6/2+3)-10*10)*(8-(1+8/4+2)))+5*(1+(2+3)/5)/3
