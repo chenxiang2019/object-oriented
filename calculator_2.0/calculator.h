@@ -22,7 +22,7 @@ class Scan
 {
     // private section
     public:
-        queue<string>ToStringQueue(string input);//type:queue<string>
+        queue<string>ToStringQueue(string input);
 };
 
 #endif // CALCULATOR_H

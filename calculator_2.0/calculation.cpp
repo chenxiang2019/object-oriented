@@ -34,13 +34,14 @@ int priority(string s)
 //=====================// 
 double calculate(string s,double a,double b)//double
 {	
-	if(s=="+")return b+a;
-	if(s=="-")return b-a;
-	if(s=="*")return b*a;
+	if(s == "+")return b+a;
+	if(s == "-")return b-a;
+	if(s == "*")return b*a;
 	
-	if(s=="/" && a!=0)return b*1.0/a;
+	if(s == "/" && a != 0)return b*1.0/a;
 	else return 0;
 }
+
 //========代码主体========// 
 double Calculation::carryout(queue<string> que)
 {	
@@ -51,7 +52,7 @@ double Calculation::carryout(queue<string> que)
 	string que_s;
 	string sign1_top;
 	
-	if(que.front()=="-")
+	if(que.front() == "-")
 	signstore.push("0");
 	
 	//==========================//
@@ -63,24 +64,23 @@ double Calculation::carryout(queue<string> que)
 		signstore.push(que.front());
 		que.pop();
 	}
-	
-//-------------------------BEGIN-------------------------//	
     
     //======部分1======//
 	//转换为前缀表达式 //
 	//=================// 
 	while(!signstore.empty())
 	{
-		s=signstore.top();
+		s = signstore.top();
 	    signstore.pop();
 		
-		if(s=="=")continue;
-		if(s=="+" || s=="-" || s=="*" || s=="/" || s=="(" || s==")")
+		if(s == "=")continue;
+		if(s == "+" || s == "-" || s == "*" 
+		|| s == "/" || s == "(" || s == ")")
 		{
 			//=============说明=============// 
 			//如果存在以下情况:             //
 			//(1)s的优先级大于sign1栈顶元素 //
-			//(2)s==")"                     //
+			//(2)s == ")"                   //
 			//(3)sign1为空栈                //
 			//则:s直接push进sign1           //
 			//==============================//
@@ -93,8 +93,8 @@ double Calculation::carryout(queue<string> que)
 				continue;
 			}
 			
-			//s==")"
-			if(s==")")
+			//s == ")"
+			if(s == ")")
 			{
 				sign1.push(s);
 				
@@ -106,9 +106,9 @@ double Calculation::carryout(queue<string> que)
 			//把sign1里面的字符push进sign2  //
 			//直至遇见右括号                //
 			//==============================//
-			if(s=="(")
+			if(s == "(")
 			{
-			    while(sign1.top()!=")")
+			    while(sign1.top() != ")")
 			    {
 			    	sign2.push(sign1.top());
 			    	
@@ -139,7 +139,7 @@ double Calculation::carryout(queue<string> que)
 			{
 				while(priority(s) < priority(sign1.top()))
 				{
-					sign1_top=sign1.top();
+					sign1_top = sign1.top();
 					
 				    sign1.pop();
 				    
@@ -152,7 +152,7 @@ double Calculation::carryout(queue<string> que)
 			}
 			else //优先级相同 且非"("括号")"直接入sign1 
 			{
-				if(s=="+" || s=="-" || s=="*" || s=="/")
+				if(s == "+" || s == "-" || s == "*" || s == "/")
 				sign1.push(s);
 			}
 		}
@@ -171,16 +171,6 @@ double Calculation::carryout(queue<string> que)
 	}
 	
 	//转换为前缀表达式 完成 
-	
-//-------------------------END-------------------------//	
-	
-	/*while(!sign2.empty())
-	{
-		cout<<sign2.top();
-		sign2.pop();
-	}
-	
-	cout<<endl;*/
 	
 	//========部分2========// 
 	//计算前缀表达式       // 
@@ -203,26 +193,27 @@ double Calculation::carryout(queue<string> que)
 	string s2;
 	
 	numberstore.push(0);
+	
 	//计算部分 
 	while(!sign_2.empty())
 	{
-		s2=sign_2.top();
+		s2 = sign_2.top();
 		sign_2.pop();
 		
 		//遇到运算符 提取出numberstore栈顶两个元素进行计算
 		//结果push进numberstore 
-		if(s2=="+" || s2=="-" || s2=="*" || s2=="/")
+		if(s2 == "+" || s2 == "-" || s2 == "*" || s2 == "/")
 		{
 			double number1;
-			number1=numberstore.top();
+			number1 = numberstore.top();
 			numberstore.pop();
 			
 			double number2;
-			number2=numberstore.top();
+			number2 = numberstore.top();
 			numberstore.pop();
 			
 			double cal_number;
-			cal_number=calculate(s2,number2,number1);
+			cal_number = calculate(s2,number2,number1);
 			
 			numberstore.push(cal_number);
 			
@@ -231,7 +222,7 @@ double Calculation::carryout(queue<string> que)
 		else //遇到操作数 转换为数字之后入栈 
 		{
 			stream.str(s2);
-			stream>>number;
+			stream >> number;
 			
 			numberstore.push(number);
 			stream.clear();
@@ -240,10 +231,10 @@ double Calculation::carryout(queue<string> que)
 		}
 	}
 	
-	double value=0;
+	double value = 0;
 	
 	if(!numberstore.empty())
-	value=numberstore.top();//栈顶元素即最终结果
+	value = numberstore.top();//栈顶元素即最终结果
 	 
 	return value;
 }

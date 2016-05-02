@@ -22,7 +22,7 @@ using namespace std;
 class Print
 {
     public:
-        void pout(queue<string> que); // type:queue<string>
+        void pout(queue<string> que);
 };
 
 #endif // PRINT_H

@@ -18,14 +18,14 @@ bool judgeerror(stack<string> sign)
 	
     while(!sign.empty())
     {
-    	s_top=sign.top();
+    	s_top = sign.top();
     	sign.pop();
-    	if(s_top==")")
+    	if(s_top == ")")
     	{
     		store.push(s_top);
     		continue;
     	}
-    	if(s_top=="(")
+    	if(s_top == "(")
     	{
     		if(store.empty())return false; 
     		
@@ -42,11 +42,11 @@ void Print::pout(queue<string> que)
 	stack<string> sign;   //用于存储"(" 和 ")" ,之后进行匹配判断 
 	
 	queue<string> store;  
-	store=que;  //用另外一个队列 找"("和")" 
+	store = que;  //用另外一个队列 找"("和")" 
 	 
 	while(!store.empty())
 	{
-		if(store.front()== "(" || store.front()==")")
+		if(store.front() == "("||store.front() == ")")
 		{
 			sign.push(store.front()); //压入用于匹配判断的栈			
 		}
@@ -64,7 +64,7 @@ void Print::pout(queue<string> que)
 	}
 	else  // "(" 与 ")" 匹配错误 
     {
-    	cout<<"error"<<endl;
+    	cout << "error" << endl;
     }
 }
 
