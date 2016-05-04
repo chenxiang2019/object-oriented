@@ -1,9 +1,9 @@
 #include "print.h"
-#include<stack>
-#include<string>
-#include<queue>
-#include<stdlib.h>
-#include<iostream>
+#include <stack>
+#include <string>
+#include <queue>
+#include <stdlib.h>
+#include <iostream>
 using namespace std;
 
 //==========================//
@@ -27,13 +27,13 @@ bool judgeerror(stack<string> sign)
     	}
     	if(s_top == "(")
     	{
-    		if(store.empty())return false; 
+    		if(store.empty()) return false; 
     		
     		store.pop();
     		continue;
     	}
     }
-    if(store.empty())return true;
+    if(store.empty()) return true;
     else return false;
 } 
 

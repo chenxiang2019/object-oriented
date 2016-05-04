@@ -15,10 +15,10 @@
 //bool error                        //  
 //==================================//
 #include "calculator.h"
-#include<string>
-#include<queue>
-#include<stdlib.h>
-#include<iostream>
+#include <string>
+#include <queue>
+#include <stdlib.h>
+#include <iostream>
 using namespace std;
 extern int bitjudge;
 
@@ -33,9 +33,9 @@ queue<string> Scan::ToStringQueue(string input)
     
     bool is_Connected = true;   //用于特判'-'号 
     //======is_Connected说明=======//
-	//is_Connected=false:          //
+	//is_Connected = false:        //
 	//不与数字相连，单独处理       // 
-	//is_Connected=true:           //
+	//is_Connected = true:         //
 	//与数字相连                   // 
     //=============================//
     
@@ -67,7 +67,7 @@ queue<string> Scan::ToStringQueue(string input)
         {
         	bitjudge = 0;   //stop the count
         	
-            judge = 1;      //judge=1代表遇见'-'  
+            judge = 1;      //judge = 1代表遇见'-'  
             
             if(s != "") 
             {

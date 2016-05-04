@@ -12,21 +12,21 @@
 //2.前缀表达式的计算                //
 //==================================//
 #include "calculation.h"
-#include<stack>
-#include<queue>
-#include<iostream>
-#include<stdlib.h>
-#include<string>
-#include<sstream>
+#include <stack>
+#include <queue>
+#include <iostream>
+#include <stdlib.h>
+#include <string>
+#include <sstream>
 
 //======priority=======//
 //说明：用于判断优先级 //
 //=====================// 
 int priority(string s)
 {
-    if(s=="(" || s== ")")return 0;
-	if(s=="+" || s=="-")return 1;
-	if(s=="*" || s=="/")return 2;
+    if(s == "(" || s == ")") return 0;
+	if(s == "+" || s == "-") return 1;
+	if(s == "*" || s == "/") return 2;
 }
 
 //======calculate======//
@@ -34,11 +34,11 @@ int priority(string s)
 //=====================// 
 double calculate(string s,double a,double b)//double
 {	
-	if(s == "+")return b+a;
-	if(s == "-")return b-a;
-	if(s == "*")return b*a;
+	if(s == "+") return b+a;
+	if(s == "-") return b-a;
+	if(s == "*") return b*a;
 	
-	if(s == "/" && a != 0)return b*1.0/a;
+	if(s == "/" && a != 0) return b*1.0/a;
 	else return 0;
 }
 
@@ -85,7 +85,6 @@ double Calculation::carryout(queue<string> que)
 			//则:s直接push进sign1           //
 			//==============================//
 			
-			//sign1为空栈  
 			if(sign1.empty())
 			{
 				sign1.push(s);
@@ -93,7 +92,6 @@ double Calculation::carryout(queue<string> que)
 				continue;
 			}
 			
-			//s == ")"
 			if(s == ")")
 			{
 				sign1.push(s);
@@ -145,7 +143,7 @@ double Calculation::carryout(queue<string> que)
 				    
 				    sign2.push(sign1_top);
 				    
-				    if(sign1.empty())break;
+				    if(sign1.empty()) break;
 				}
 				sign1.push(s);
 				continue;

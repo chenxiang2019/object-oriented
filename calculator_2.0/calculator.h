@@ -6,10 +6,10 @@
 //==============================//
 #ifndef CALCULATOR_H
 #define CALCULATOR_H
-#include<string>
-#include<queue>
-#include<stdlib.h>
-#include<iostream>
+#include <string>
+#include <queue>
+#include <stdlib.h>
+#include <iostream>
 using namespace std;
 
 //===============================//
