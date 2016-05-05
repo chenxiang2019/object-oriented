@@ -26,9 +26,9 @@ double Circle_area :: Input()
 
 double Circle_area :: Calculate(double r)
 {
-	double S=0;
+	double S = 0;
 	
-	S=pi*r*r;
+	S = pi*r*r;
 	
 	return S;
 }

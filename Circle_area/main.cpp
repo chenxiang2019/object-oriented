@@ -17,7 +17,7 @@ int main()
 	
 	s = area.Calculate(r);
 	
-	cout << "The circle's area is : " << setprecision(4) << s <<endl;
+	cout << "The circle's area is : " << setprecision(4) << s << endl;
 	
 	return 0;
 }
