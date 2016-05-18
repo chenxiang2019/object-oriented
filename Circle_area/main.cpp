@@ -13,6 +13,12 @@ int main()
 	
 	r = area.Input();
 	
+	if(r < 0)
+	{
+		cout << "Input Error!" << endl;
+		return 0;
+	}
+	
 	double s;
 	
 	s = area.Calculate(r);

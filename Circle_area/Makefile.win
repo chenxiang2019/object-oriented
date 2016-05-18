@@ -1,15 +1,15 @@
-# Project: C++作业
+# Project: Circle_area
 # Makefile created by Dev-C++ 5.3.0.3
 
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = 1/main.o 1/circle_area.o $(RES)
-LINKOBJ  = 1/main.o 1/circle_area.o $(RES)
+OBJ      = main.o circle_area.o $(RES)
+LINKOBJ  = main.o circle_area.o $(RES)
 LIBS     = -L"D:/C/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
 INCS     = -I"D:/C/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
 CXXINCS  = -I"D:/C/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
-BIN      = C++作业.exe
+BIN      = Circle_area.exe
 CXXFLAGS = $(CXXINCS)  -g3
 CFLAGS   = $(INCS)  -g3
 RM       = rm -f
@@ -25,8 +25,8 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-1/main.o: 1/main.cpp
-	$(CPP) -c 1/main.cpp -o 1/main.o $(CXXFLAGS)
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
 
-1/circle_area.o: 1/circle_area.cpp
-	$(CPP) -c 1/circle_area.cpp -o 1/circle_area.o $(CXXFLAGS)
+circle_area.o: circle_area.cpp
+	$(CPP) -c circle_area.cpp -o circle_area.o $(CXXFLAGS)
