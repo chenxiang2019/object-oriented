@@ -7,10 +7,11 @@
 using namespace std;
 
 //==========================//
-//judgeerror函数：          //
-//判断"("和")"是否匹配      //
-//不匹配的话输出error       //
+//judgeerror函数：          
+//    判断"("和")"是否匹配      
+//    不匹配的话输出error       
 //==========================// 
+
 bool judgeerror(stack<string> sign)
 {
 	string s_top; 
@@ -39,21 +40,21 @@ bool judgeerror(stack<string> sign)
 
 void Print::pout(queue<string> que)
 {
-	stack<string> sign;   //用于存储"(" 和 ")" ,之后进行匹配判断 
+	stack<string> sign; //用于存储"(" 和 ")" ,之后进行匹配判断 
 	
 	queue<string> store;  
-	store = que;  //用另外一个队列 找"("和")" 
+	store = que; //用另外一个队列 找"("和")" 
 	 
 	while(!store.empty())
 	{
-		if(store.front() == "("||store.front() == ")")
+		if(store.front() == "(" || store.front() == ")")
 		{
 			sign.push(store.front()); //压入用于匹配判断的栈			
 		}
 		store.pop();
 	}
 	
-	if(judgeerror(sign))    // "(" 与 ")"匹配 进行输出 
+	if(judgeerror(sign)) // "(" 与 ")"匹配 进行输出 
 	{
 		while(!que.empty()) // "que" is not empty
         {
@@ -62,7 +63,7 @@ void Print::pout(queue<string> que)
 		    que.pop();
         }
 	}
-	else  // "(" 与 ")" 匹配错误 
+	else // "(" 与 ")" 匹配错误 
     {
     	cout << "error" << endl;
     }
